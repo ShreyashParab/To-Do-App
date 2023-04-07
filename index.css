@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    font-family: Roboto,'san-serif';
+}
+
+.container{
+    background-color:#051b24;
+    color:#e8edef;
+    padding: 3em;
+}
+
+.todo--input{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.todo--input .heading{
+    font-size: 2rem;
+    margin-bottom: 1em;
+}

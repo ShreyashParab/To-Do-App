@@ -23,17 +23,17 @@ addTaskBtn.addEventListener('click',()=>{
     displayData()
 })
 
-function displayData(){
-    let tasks = ''
-    if(list!=null)
-    {
-        list.forEach((element,index)=>{
-            tasks += `<div>${element}</div>`
-        })
-        todolist.innerHTML = tasks
-    }
+// function displayData(){
+//     let tasks = ''
+//     if(list!=null)
+//     {
+//         list.forEach((element,index)=>{
+//             tasks += `<div>${element}</div>`
+//         })
+//         todolist.innerHTML = tasks
+//     }
    
-}
+// }
 
 
 // todolist.innerHTML+=`<div>${datafetch[i]}</div>`

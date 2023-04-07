@@ -1,0 +1,29 @@
+// Background at input
+background-color:#051b24;
+
+//button background
+background-color:#fe8d43;
+
+//text-input background
+background-color:#062a36;
+
+// Background in remaining body 
+background-color:#e8f3f9;
+
+// heading color
+color:#e8edef;
+
+//task background
+background-color:#fefefe;
+
+//task font color
+color:#46525b;
+
+//task done
+background-color:#d1e7f0
+
+//filter background
+background-color:#071b23;
+
+//filter background count
+background-color:#2188b7;
