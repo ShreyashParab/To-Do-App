@@ -1,10 +1,12 @@
+/* ------------------------------------------------   CSS OF INPUT AREA   ---------------------------------------------- */
+
 body , body::before,body::after{
     margin: 0;
     background-color:#e8f3f9;
     font-family: 'Roboto',sans-serif;
 }
 
-.container{
+.inputArea{
     background-color:#051b24;
     color: #e8f3f9;
     padding: 20px;
@@ -22,6 +24,18 @@ body , body::before,body::after{
     border: none;
     border-radius: 5px;
     background-color:#062a36;
+    color: #e8f3f9;
+    font-size: 16px;
+}
+
+
+input::placeholder{
+    color: #e8f3f9;
+    opacity: 0.7;
+}
+
+input:focus{
+    outline: none;
 }
 
 .inputField #btn{
@@ -32,4 +46,103 @@ body , body::before,body::after{
     color: #e8f3f9;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
 }
+
+.inputField #btn:hover{
+    color: #fe8d43;
+    background-color: #e8f3f9;
+}
+
+/* --------------------------------------------------------   CSS OF LIST AREA   --------------------------------------------------- */
+
+/* ------------------------   task counter part   ---------------------- */
+
+.counter{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: medium;
+    margin-bottom: 1rem;
+}
+
+.total , .completed , .remaining{
+    display: flex;
+    gap: 0;
+    color: #e8f3f9;
+}
+
+.counterText{
+    background-color: #051b24;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px ;
+}
+
+.count{
+    background-color: #2188b7;
+    border-top-right-radius: 5px ;
+    border-bottom-right-radius: 5px;
+}
+
+.counterText , .count{
+    padding: 8px;
+}
+
+
+
+
+
+/* ------------------------   task display part   ---------------------- */
+
+.listArea{
+    padding: 20px;
+}
+
+.task{
+    display: flex;
+    padding: 12px;
+    background-color:#fefefe;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.task label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task label input {
+    visibility: hidden;/* <-- Hide the default checkbox. The rest is to hide and allow tabbing, which display:none prevents */
+    display: block;
+    height: 0;
+    width: 0;
+    position: absolute;
+    overflow: hidden;
+}
+
+.task label span {/* <-- Style the artificial checkbox */
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.task label .text{
+    font-size: larger;
+}
+
+[type=checkbox]:checked + span {
+    background: #7fb8cf;
+}
+
+.taskDone{
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.taskDoneBg{
+    background-color: #d1e7f0;
+}
+  

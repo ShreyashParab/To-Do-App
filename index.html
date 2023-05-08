@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
     <title>TO DO APP</title>
 </head>
 <body>
@@ -18,7 +19,44 @@
             </div>
         </div>
         <div class="listArea">
-
+            <div class="counter">
+                <div class="total">
+                    <span class="counterText">Total</span>
+                    <span class="count">3</span>
+                </div>
+                <div class="completed">
+                    <span class="counterText">Completed</span>
+                    <span class="count">2</span>
+                </div>
+                <div class="remaining">
+                    <span class="counterText">Remaining</span>
+                    <span class="count">1</span>
+                </div>
+            </div>
+            <div class="task" id="task">
+                <div class="doneTask">
+                    <label>
+                        <input type="checkbox" name="taskComplete" id="taskComplete">
+                        <span class="checkmark"></span>
+                        <div class="text" id="text">hii</div>
+                    </label>                 
+                </div>
+                <div class="action">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/qtqvorle.json"
+                        trigger="hover"
+                        colors="outline:#121331,primary:#646e78,secondary:#ebe6ef,tertiary:#4cb4fd"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/jmkrnisz.json"
+                        trigger="hover"
+                        colors="primary:#e83a30"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+                </div>
+                
+            </div>
         </div>
     </div>    
     
