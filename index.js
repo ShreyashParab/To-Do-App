@@ -1,37 +1,35 @@
-let task = []
-let input = document.getElementById('input')
-let btn = document.getElementById('btn')
-let tasks = document.getElementById('tasks')
-let statement = ''
+let task = [];
+let input = document.getElementById('input');
+let btn = document.getElementById('btn');
+let tasks = document.getElementById('tasks');
+let statement = '';
 
-    // getting previous stored task so that is visible even after reload
+// Getting previously stored tasks to display even after reload
+let taskInLocalStorage = JSON.parse(localStorage.getItem('todo'));
 
-    let taskInLocalStorage = JSON.parse(localStorage.getItem('todo'))
-    for (const i in taskInLocalStorage) {
-        task.push(taskInLocalStorage[i])
-        insertTask()
-    }
+for (const i in taskInLocalStorage) {
+  task.push(taskInLocalStorage[i]);
+  insertTask();
+}
 
-    btn.addEventListener('click',insertTask)
+btn.addEventListener('click', insertTask);
 
-    // Insert and display task
+// Insert and display task
+function insertTask() {
+  if (input.value) {
+    task.push(input.value);
+  }
 
-    function insertTask(){
-        if(input.value)
-        {
-            task.push(input.value)
-        }
-    
-        localStorage.setItem('todo',JSON.stringify(task))
-        
-        let getTask = JSON.parse(localStorage.getItem('todo'))
+  localStorage.setItem('todo', JSON.stringify(task));
 
-        for(let i = 0; i<getTask.length;i++)
-        {
-            statement = `<div class="task" id="task">
+  let getTask = JSON.parse(localStorage.getItem('todo'));
+  statement = '';
+
+  for (let i = 0; i < getTask.length; i++) {
+    statement += `<div class="task" id="task">
             <div class="doneTask">
                 <label>
-                    <input type="checkbox" name="taskComplete" id="taskComplete">
+                    <input type="checkbox" name="taskComplete" class="taskComplete">
                     <span class="checkmark"></span>
                     <div class="text" id="text">${getTask[i]}</div>
                 </label>                 
@@ -52,42 +50,61 @@ let statement = ''
                     style="width:35px;height:35px">
                 </lord-icon>
             </div>   
-        </div>`
-        }
-        
-        tasks.innerHTML += statement
+        </div>`;
+  }
 
-        input.value = ''
-        
-    }
+  tasks.innerHTML = statement
+  input.value = ''
 
-    // Task complete logic
-    
-    let checkbox = document.getElementById('taskComplete')
-    checkbox.addEventListener('click',taskComplete)
+  registerCheckboxListeners()
+  registerDeleteListeners()
+  registerEditListeners()
+}
 
-    function taskComplete(event){
+// Register event listeners for checkboxes
+function registerCheckboxListeners() {
+  let checkboxes = document.getElementsByClassName('taskComplete')
 
-        if (event.target.checked) {
-            document.getElementById('text').classList.add('taskDone')
-            document.getElementById('task').classList.add('taskDoneBg')
-        }
-        else{
-            document.getElementById('text').classList.remove('taskDone')
-            document.getElementById('task').classList.remove('taskDoneBg')
-        }
-    }
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('click', taskComplete)
+  }
+}
 
-    // Task Delete Logic
-
+function registerDeleteListeners(){
     let deleteBtn = document.getElementsByClassName('deleteBtn')
-    for(let i=0;i<deleteBtn.length;i++)
+
+    for(let i=0; i<deleteBtn.length;i++)
     {
         deleteBtn[i].addEventListener('click',deleteTask)
     }
+}
 
-    function deleteTask(event){
-        
+function registerEditListeners(){
+    let editBtn = document.getElementsByClassName('editBtn')
+
+    for(let i=0;i<editBtn.length;i++)
+    {
+        editBtn[i].addEventListener('click',editTask)
+    }
+}
+
+// Task complete logic
+function taskComplete(event) {
+  let checkbox = event.target;
+  let textElement = checkbox.parentNode.querySelector('.text')
+  let taskElement = checkbox.parentNode.parentNode.parentNode
+
+  if (checkbox.checked) {
+    textElement.classList.add('taskDone')
+    taskElement.classList.add('taskDoneBg')
+  } else {
+    textElement.classList.remove('taskDone');
+    taskElement.classList.remove('taskDoneBg');
+  }
+}
+
+// Task delete logic
+    function deleteTask(event){     
         let element = event.target.parentElement.parentElement.children[0]
         let index = taskInLocalStorage.indexOf(element.innerText)
 
@@ -99,13 +116,14 @@ let statement = ''
         }
 
         // element.parentElement.parentElement.removeChild(element.parentElement.parentElement.children[0])
-        localStorage.setItem('todo',JSON.stringify(array))           
+        localStorage.setItem('todo',JSON.stringify(array))          
+        location.reload() 
     }
 
+    
 
 
 
     
     
     
-
