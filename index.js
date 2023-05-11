@@ -58,9 +58,15 @@ function insertTask() {
   tasks.innerHTML = statement;
   input.value = '';
 
+<<<<<<< HEAD
   registerCheckboxListeners();
   registerDeleteListeners();
   registerEditListeners();
+=======
+  registerCheckboxListeners()
+  registerDeleteListeners()
+ // registerEditListeners()
+>>>>>>> a735ef8cb63661112e35e7bdc74eaddbddf293be
 }
 
 // Register event listeners for checkboxes
