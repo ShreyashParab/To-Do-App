@@ -1,6 +1,7 @@
 let task = [];
 let input = document.getElementById('input');
 let btn = document.getElementById('btn');
+let editBtn = document.getElementById('editBtn');
 let tasks = document.getElementById('tasks');
 let statement = '';
 
@@ -12,9 +13,10 @@ for (const i in taskInLocalStorage) {
   insertTask();
 }
 
+// Insert and display task
+
 btn.addEventListener('click', insertTask);
 
-// Insert and display task
 function insertTask() {
   if (input.value) {
     task.push(input.value);
@@ -53,77 +55,81 @@ function insertTask() {
         </div>`;
   }
 
-  tasks.innerHTML = statement
-  input.value = ''
+  tasks.innerHTML = statement;
+  input.value = '';
 
-  registerCheckboxListeners()
-  registerDeleteListeners()
-  registerEditListeners()
+  registerCheckboxListeners();
+  registerDeleteListeners();
+  registerEditListeners();
 }
 
 // Register event listeners for checkboxes
 function registerCheckboxListeners() {
-  let checkboxes = document.getElementsByClassName('taskComplete')
+  let checkboxes = document.getElementsByClassName('taskComplete');
 
   for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener('click', taskComplete)
+    checkboxes[i].addEventListener('click', taskComplete);
   }
 }
 
-function registerDeleteListeners(){
-    let deleteBtn = document.getElementsByClassName('deleteBtn')
+function registerDeleteListeners() {
+  let deleteBtn = document.getElementsByClassName('deleteBtn');
 
-    for(let i=0; i<deleteBtn.length;i++)
-    {
-        deleteBtn[i].addEventListener('click',deleteTask)
-    }
+  for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener('click', deleteTask);
+  }
 }
 
-function registerEditListeners(){
-    let editBtn = document.getElementsByClassName('editBtn')
+function registerEditListeners() {
+  let editBtns = document.getElementsByClassName('editBtn');
 
-    for(let i=0;i<editBtn.length;i++)
-    {
-        editBtn[i].addEventListener('click',editTask)
-    }
+  for (let i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', editTask);
+  }
 }
 
 // Task complete logic
 function taskComplete(event) {
   let checkbox = event.target;
-  let textElement = checkbox.parentNode.querySelector('.text')
-  let taskElement = checkbox.parentNode.parentNode.parentNode
+  let textElement = checkbox.parentNode.querySelector('.text');
+  let taskElement = checkbox.parentNode.parentNode.parentNode;
 
   if (checkbox.checked) {
-    textElement.classList.add('taskDone')
-    taskElement.classList.add('taskDoneBg')
+    textElement.classList.add('taskDone');
+    taskElement.classList.add('taskDoneBg');
   } else {
     textElement.classList.remove('taskDone');
     taskElement.classList.remove('taskDoneBg');
   }
 }
 
-// Task delete logic
-    function deleteTask(event){     
-        let element = event.target.parentElement.parentElement.children[0]
-        let index = taskInLocalStorage.indexOf(element.innerText)
-
-        let array = JSON.parse(localStorage.getItem('todo'))
-
-        if(index > -1)
-        {
-            array.splice(index,1)
-        }
-
-        // element.parentElement.parentElement.removeChild(element.parentElement.parentElement.children[0])
-        localStorage.setItem('todo',JSON.stringify(array))          
-        location.reload() 
+  // Task delete logic
+  function deleteTask(event) {
+    let element = event.target.parentElement.parentElement.children[0];
+    let index = taskInLocalStorage.indexOf(element.innerText);
+  
+    let array = JSON.parse(localStorage.getItem('todo'));
+  
+    if (index > -1) {
+      array.splice(index, 1);
     }
-
-    
-
-
-
-    
-    
-    
+  
+    localStorage.setItem('todo', JSON.stringify(array));
+    location.reload();
+  }
+  
+  function editTask(event) {
+    btn.classList.add('hide');
+    editBtn.classList.remove('hide');
+    let textElement = event.target.parentElement.parentElement.querySelector('.text');
+    input.value = textElement.innerText;
+  
+    editBtn.addEventListener('click', () => {
+      let index = taskInLocalStorage.indexOf(textElement.innerText);
+      if (index > -1) {
+        task[index] = input.value;
+        localStorage.setItem('todo', JSON.stringify(task));
+        location.reload();
+      }
+    });
+  }
