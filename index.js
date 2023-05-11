@@ -58,7 +58,7 @@ function insertTask() {
 
   registerCheckboxListeners()
   registerDeleteListeners()
-  registerEditListeners()
+ // registerEditListeners()
 }
 
 // Register event listeners for checkboxes
