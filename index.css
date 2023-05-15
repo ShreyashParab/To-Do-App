@@ -69,6 +69,7 @@ input:focus{
     display: flex;
     gap: 0;
     color: #e8f3f9;
+    cursor: pointer;
 }
 
 .counterText{
@@ -84,7 +85,7 @@ input:focus{
 }
 
 .counterText , .count{
-    padding: 8px;
+    padding: 6px;
 }
 
 
