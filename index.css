@@ -13,6 +13,11 @@ body , body::before,body::after{
     /* height: 150px; */
 }
 
+.inputArea > *{
+    max-width: 600px;
+    margin: 1.3rem auto;
+}
+
 .inputField{
     display: flex;
     flex-direction: column;
@@ -62,7 +67,7 @@ input:focus{
     display: flex;
     justify-content: space-evenly;
     font-size: medium;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .total , .completed , .remaining{
@@ -96,6 +101,11 @@ input:focus{
 
 .listArea{
     padding: 20px;
+}
+
+.listArea > *{
+    max-width: 600px;
+    margin: 1.2rem auto;
 }
 
 .task{
@@ -155,4 +165,76 @@ input:focus{
 .show{
     display: block;
 }
+
+/* for desktop  */
+@media (min-width:600px){
+    .counterText , .count{
+        padding: 8px;
+    }
+}
+
+@media (min-width:900px){
+    .counterText , .count{
+        padding: 8px;
+    }
+    
+    .inputArea > *{
+        max-width: 700px;
+        margin: 1.3rem auto;
+    }
+
+    .listArea > *{
+        max-width: 700px;
+        margin: 1.2rem auto;
+    }
+}
+
+@media (min-width:1000px)
+{
+    .inputArea{
+        min-height: 180px;
+        padding: 18px;
+    }
+
+    .inputArea > *{
+        max-width: 600px;
+        margin: 1.3rem auto;
+    }
+
+    .inputField{
+        display: flex !important;
+        flex-direction: row;
+    }
+
+    .input{
+        width: 70%;
+    }
+
+    .listArea{
+        max-width: 800px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        gap: 10%;
+        margin: 0 auto;
+    }
+
+    .counter{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 30%;
+        gap: 15px;
+    }
+
+    .tasks{
+        width: 70%;
+        min-width: 600px;
+    }
+    
+
+
+}
+
+
   
