@@ -47,6 +47,7 @@ To run this project
 ![App Screenshot](https://raw.githubusercontent.com/ShreyashParab/To-Do-App/master/assets/UI/Desktop_design.PNG)
 
 - Mobile Design
+
 ![App Screenshot](https://raw.githubusercontent.com/ShreyashParab/To-Do-App/master/assets/UI/Mobile_design.PNG)
 
 
