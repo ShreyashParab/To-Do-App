@@ -44,6 +44,7 @@ To run this project
 
 ## Screenshots
 - Desktop Design
+
 ![App Screenshot](https://raw.githubusercontent.com/ShreyashParab/To-Do-App/master/assets/UI/Desktop_design.PNG)
 
 - Mobile Design
